@@ -23,6 +23,7 @@
             </intent-filter>
         </activity>
         <service android:name=".Overlay" />
+        <service android:name=".CounterOverlay" />
     </application>
 
 </manifest>

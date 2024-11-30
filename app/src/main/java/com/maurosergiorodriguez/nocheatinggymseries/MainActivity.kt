@@ -94,12 +94,14 @@ class MainActivity : AppCompatActivity() {
             if (!checkOverlayPermissions()) {
                 requestOverlayPermission()
             } else {
-                startService(Intent(this@MainActivity, Overlay::class.java))
+                //startService(Intent(this@MainActivity, Overlay::class.java))
+                startService(Intent(this@MainActivity, CounterOverlay::class.java))
                 isServiceRunning = true
                 updateLaunchButtonText()
             }
         } else {
-            stopService(Intent(this@MainActivity, Overlay::class.java))
+            //stopService(Intent(this@MainActivity, Overlay::class.java))
+            stopService(Intent(this@MainActivity, CounterOverlay::class.java))
             isServiceRunning = false
             updateLaunchButtonText()
         }
