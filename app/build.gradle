@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace 'com.example.atop'
+    namespace 'com.maurosergiorodriguez.nocheatinggymseries'
     compileSdk 33
 
     defaultConfig {

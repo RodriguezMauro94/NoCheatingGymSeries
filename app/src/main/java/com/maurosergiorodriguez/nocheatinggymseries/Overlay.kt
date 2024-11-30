@@ -1,4 +1,4 @@
-package com.example.atop
+package com.maurosergiorodriguez.nocheatinggymseries
 
 import android.app.ActivityManager
 import android.app.Service
@@ -20,7 +20,6 @@ import android.view.WindowManager
 import android.widget.TextView
 import java.text.DecimalFormat
 import kotlin.math.abs
-
 
 class Overlay: Service() {
 

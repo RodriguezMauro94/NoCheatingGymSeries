@@ -1,4 +1,4 @@
-package com.example.atop
+package com.maurosergiorodriguez.nocheatinggymseries
 
 import java.io.File
 import java.io.FileFilter

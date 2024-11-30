@@ -1,4 +1,4 @@
-package com.example.atop
+package com.maurosergiorodriguez.nocheatinggymseries
 
 import android.app.ActivityManager
 import android.app.AlertDialog
