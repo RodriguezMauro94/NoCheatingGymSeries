@@ -22,7 +22,6 @@ import java.text.DecimalFormat
 import kotlin.math.abs
 
 class Overlay: Service() {
-
     private lateinit var overlayView: ViewGroup
     private lateinit var overlayLayoutParams: WindowManager.LayoutParams
     private var layoutType: Int? =null
@@ -34,16 +33,12 @@ class Overlay: Service() {
     private lateinit var monitoringRunnable: Runnable
     private val mainHandler = Handler(Looper.getMainLooper())
 
-//    private lateinit var gpuNumberTextView: TextView
     private lateinit var powerNumberTextView: TextView
     private lateinit var cpuNumberTextView: TextView
     private lateinit var memoryNumberTextView: TextView
     private lateinit var fpsNumberTextView: TextView
     private lateinit var fps1LowNumberTextView: TextView
     private lateinit var fps01LowNumberTextView: TextView
-
-    private var previousEnergy: Long = 0
-    private var previousTime: Long = 0
 
     private val decimalFormat = DecimalFormat("0.00")
     private val integerFormat = DecimalFormat("0")
@@ -53,13 +48,9 @@ class Overlay: Service() {
     }
     override fun onCreate() {
         super.onCreate()
-
-
-
         windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
         val inflater = baseContext.getSystemService(LAYOUT_INFLATER_SERVICE) as LayoutInflater
         overlayView = inflater.inflate(R.layout.overlay,null) as ViewGroup
-
 
         layoutType = if (Build.VERSION.SDK_INT >=  Build.VERSION_CODES.O) {
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
@@ -84,7 +75,6 @@ class Overlay: Service() {
         monitoringRunnable = Runnable { monitorPerformance() }
 
         //TextView init
-//        gpuNumberTextView = overlayView.findViewById(R.id.gpuNumber)
         powerNumberTextView = overlayView.findViewById(R.id.powerNumber)
         cpuNumberTextView = overlayView.findViewById(R.id.cpuNumber)
         memoryNumberTextView = overlayView.findViewById(R.id.memoryNumber)
@@ -97,7 +87,7 @@ class Overlay: Service() {
         //FPS calculation
         Choreographer.getInstance().postFrameCallback(choreographerCallback)
 
-        windowManager.addView(overlayView,overlayLayoutParams)
+        windowManager.addView(overlayView, overlayLayoutParams)
     }
 
     private fun monitorPerformance() {
@@ -123,21 +113,8 @@ class Overlay: Service() {
         val usedMemory = totalMemory - availableMemory
         val memoryUtilization = usedMemory / (1024*1024)
 
-
-        //GPU
-//        val gpuUtilization =  0
-
-
-        //FPS
-//        val currentFps = 0
-//        val fps1Low = 0
-//        val fps01Low = 0
-
         //Update TextViews
         mainHandler.post {
-//            val gpuText = getString(R.string.gpu_utilization, decimalFormat.format(gpuUtilization))
-//            gpuNumberTextView.text = gpuText
-
             val powerText = getString(R.string.power_consumption, decimalFormat.format(energy))
             powerNumberTextView.text = powerText
 
@@ -146,10 +123,6 @@ class Overlay: Service() {
 
             val memoryText = getString(R.string.memory_utilization, integerFormat.format(memoryUtilization))
             memoryNumberTextView.text = memoryText
-
-//            fpsNumberTextView.text = currentFps.toString()
-//            fps1LowNumberTextView.text = fps1Low.toString()
-//            fps01LowNumberTextView.text = fps01Low.toString()
         }
 
         //Update Interval: 1s
@@ -193,10 +166,6 @@ class Overlay: Service() {
             return sortedFps[index]
         }
     }
-
-
-
-
 
     override fun onDestroy() {
         super.onDestroy()

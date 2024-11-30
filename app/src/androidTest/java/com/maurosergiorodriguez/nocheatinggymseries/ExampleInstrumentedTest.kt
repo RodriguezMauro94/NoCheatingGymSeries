@@ -1,4 +1,4 @@
-package com.example.atop
+package com.maurosergiorodriguez.nocheatinggymseries
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.example.atop", appContext.packageName)
+        assertEquals("com.maurosergiorodriguez.nocheatinggymseries", appContext.packageName)
     }
 }
