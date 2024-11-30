@@ -11,7 +11,7 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
 
-class CounterOverlay: Service() {
+class CounterOverlayService: Service() {
     private lateinit var overlayView: ViewGroup
     private lateinit var overlayLayoutParams: WindowManager.LayoutParams
     private var layoutType: Int? =null

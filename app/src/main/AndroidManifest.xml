@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <service android:name=".CounterOverlay" />
+        <service android:name=".CounterOverlayService" />
     </application>
 
 </manifest>

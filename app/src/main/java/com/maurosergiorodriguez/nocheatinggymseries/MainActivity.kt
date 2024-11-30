@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         for (service in manager.getRunningServices(Int.MAX_VALUE)) {
 
-            if (CounterOverlay::class.java.name == service.service.className) {
+            if (CounterOverlayService::class.java.name == service.service.className) {
                 return true
             }
         }
@@ -95,13 +95,13 @@ class MainActivity : AppCompatActivity() {
                 requestOverlayPermission()
             } else {
                 //startService(Intent(this@MainActivity, Overlay::class.java))
-                startService(Intent(this@MainActivity, CounterOverlay::class.java))
+                startService(Intent(this@MainActivity, CounterOverlayService::class.java))
                 isServiceRunning = true
                 updateLaunchButtonText()
             }
         } else {
             //stopService(Intent(this@MainActivity, Overlay::class.java))
-            stopService(Intent(this@MainActivity, CounterOverlay::class.java))
+            stopService(Intent(this@MainActivity, CounterOverlayService::class.java))
             isServiceRunning = false
             updateLaunchButtonText()
         }
