@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Button
+import android.widget.ImageButton
 
 class CounterOverlayService: Service() {
     private lateinit var overlayView: ViewGroup
@@ -18,6 +19,8 @@ class CounterOverlayService: Service() {
     private lateinit var windowManager: WindowManager
 
     private lateinit var counterButton: Button
+    private lateinit var restartButton: ImageButton
+    private lateinit var minusButton: ImageButton
 
     override fun onBind(p0: Intent?): IBinder? {
         return null
@@ -46,11 +49,26 @@ class CounterOverlayService: Service() {
         overlayLayoutParams.y = 0
 
         //Views init
-        counterButton = overlayView.findViewById(R.id.series_conter_utton)
+        counterButton = overlayView.findViewById(R.id.series_conter_button)
+        restartButton = overlayView.findViewById(R.id.restart_button)
+        minusButton = overlayView.findViewById(R.id.minus_button)
 
         counterButton.setOnClickListener {
-            val next: Int = counterButton.text.toString().toInt() + 1
-            counterButton.text = "$next"
+            val actual: Int = counterButton.text.toString().toInt()
+            if (actual < 99) {
+                counterButton.text = "${actual + 1}"
+            }
+        }
+
+        restartButton.setOnClickListener {
+            counterButton.setText(R.string.series_initial_value)
+        }
+
+        minusButton.setOnClickListener {
+            val actual: Int = counterButton.text.toString().toInt()
+            if (actual > 0) {
+                counterButton.text = "${actual - 1}"
+            }
         }
 
         windowManager.addView(overlayView, overlayLayoutParams)
