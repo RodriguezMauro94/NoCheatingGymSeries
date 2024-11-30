@@ -45,9 +45,7 @@ class CounterOverlay: Service() {
         overlayLayoutParams.x = 0
         overlayLayoutParams.y = 0
 
-        //Monitoring thread init
-
-        //TextView init
+        //Views init
         counterButton = overlayView.findViewById(R.id.series_conter_utton)
 
         counterButton.setOnClickListener {

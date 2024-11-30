@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
         for (service in manager.getRunningServices(Int.MAX_VALUE)) {
 
-            if (Overlay::class.java.name == service.service.className) {
+            if (CounterOverlay::class.java.name == service.service.className) {
                 return true
             }
         }
